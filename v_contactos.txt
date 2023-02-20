@@ -1,0 +1,17 @@
+CREATE 
+    ALGORITHM = UNDEFINED 
+    DEFINER = `root`@`localhost` 
+    SQL SECURITY DEFINER
+VIEW `v_contactos` AS
+    SELECT 
+        `contactos`.`id_contacto` AS `id_contacto`,
+        `categorias`.`id_categoria` AS `id_categoria`,
+        `categorias`.`nombre` AS `nombre_categoria`,
+        `contactos`.`paterno` AS `paterno`,
+        `contactos`.`materno` AS `materno`,
+        `contactos`.`nombre` AS `nombre`,
+        `contactos`.`telefono` AS `telefono`,
+        `contactos`.`email` AS `email`
+    FROM
+        (`t_contactos` `contactos`
+        JOIN `t_categorias` `categorias` ON ((`contactos`.`id_categoria` = `categorias`.`id_categoria`)))
